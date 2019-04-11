@@ -9,7 +9,7 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: "external_url 'http://192.168.99.100';"
     volumes:
-    - C:/Users/Andrew/gitlab/config:/etc/gitlab
+    - ./config:/etc/gitlab
     - gitlab-logs:/var/log/gitlab
     - gitlab-data:/var/opt/gitlab
     ports:
@@ -17,5 +17,3 @@ services:
     - 80:80
     - 22:22
     restart: on-failure
-  gitlab-runner1:
-   image: gitlab/gitlab-runner:alpine
