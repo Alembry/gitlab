@@ -12,7 +12,11 @@ docker-compose up gitlab-runner1
 log into gitlab and setup root account, get runner config key and external url.
 docker exec -it gitlab-runner1 gitlab-runner register
 ```
-
+#### SMTP
+```
+Edit: /etc/gitlab/gitlab.rb and run gitlab-ctl reconfigure.
+[REFERENCE]:(https://docs.gitlab.com/omnibus/settings/smtp.html)
+```
 ## Backups
 Backups are stores in ``/var/opt/gitlab/backups``. They contain all repositories and data around gitlab. We should
 also backup the /etc/gitlab directory. The directory contains the database encryption secrets and 
