@@ -16,6 +16,7 @@ services:
     - 443:443
     - 80:80
     - 22:22
-    restart: on-failure
+    restart: always
   gitlab-runner1:
    image: gitlab/gitlab-runner:alpine
+   restart: always
