@@ -1,17 +1,14 @@
 version: "3.5"
 
-volumes:
-  gitlab-logs:
-  gitlab-data:
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
     environment:
-      GITLAB_OMNIBUS_CONFIG: "external_url 'http://192.168.99.100';"
+      GITLAB_OMNIBUS_CONFIG: "external_url 'http://gitlab.unusualgeek.com';"
     volumes:
-    - C:/Users/Andrew/gitlab/config:/etc/gitlab
-    - gitlab-logs:/var/log/gitlab
-    - gitlab-data:/var/opt/gitlab
+    - ./config:/etc/gitlab
+    - ./logs:/var/log/gitlab
+    - ./data:/var/opt/gitlab
     ports:
     - 443:443
     - 80:80
@@ -19,4 +16,8 @@ services:
     restart: always
   gitlab-runner1:
    image: gitlab/gitlab-runner:alpine
+   volumes:
+   - ./runner1:/etc/gitlab-runner
+   - /var/run/docker.sock:/var/run/docker.sock
    restart: always
+
