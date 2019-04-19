@@ -1,8 +1,12 @@
 ## Install
 ```
+mkdir /etc/ssl/certs/gitlab
+copy certs into
 git clone repo
+update docker-compose.yml
 sudo su -
 crontab -e
+
 add:
 0 2 * * * docker exec gitlab_gitlab_1 sh -c 'gitlab-rake gitlab:backup:restore' CRON=1
 docker-compose build
